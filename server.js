@@ -42,7 +42,8 @@ app.get('/dashboard', (req, res) => {
 
 app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'dashboard-admin.html'));
-    
+});
+
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
@@ -317,4 +318,7 @@ app.delete('/api/admin/delete-user/:id', verifyToken, (req, res) => {
 
 app.listen(config.port, () => {
   console.log(`🚀 Server running at http://localhost:${config.port}`);
+  console.log(`📁 Public JSON: http://localhost:${config.port}/data_keys.json`);
+  console.log(`🔗 Dashboard: http://localhost:${config.port}/dashboard`);
+  console.log(`👑 Admin Panel: http://localhost:${config.port}/admin`);
 });
