@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAMZZ HOSTING - Beli Key Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #0a0c1a 0%, #03050a 100%);
+            font-family: 'Orbitron', monospace;
+            min-height: 100vh;
+            color: white;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(78,115,223,0.3);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #4e73df, #1cc88a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-buttons button {
+            background: transparent;
+            border: 1px solid #4e73df;
+            padding: 10px 25px;
+            margin-left: 15px;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .nav-buttons button:hover {
+            background: #4e73df;
+        }
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .hero span {
+            color: #4e73df;
+        }
+        .packages {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            padding: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .package-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(78,115,223,0.3);
+            border-radius: 20px;
+            padding: 30px;
+            width: 250px;
+            text-align: center;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .package-card:hover {
+            transform: translateY(-10px);
+            border-color: #4e73df;
+            box-shadow: 0 0 30px rgba(78,115,223,0.3);
+        }
+        .package-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .price {
+            font-size: 28px;
+            color: #1cc88a;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .price small {
+            font-size: 12px;
+            color: #aaa;
+        }
+        .btn-buy {
+            background: linear-gradient(135deg, #4e73df, #224abe);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #0a0c1a;
+            border: 1px solid #4e73df;
+            border-radius: 20px;
+            padding: 40px;
+            width: 400px;
+            max-width: 90%;
+        }
+        .modal-content h2 {
+            color: #4e73df;
+            margin-bottom: 20px;
+        }
+        .modal-content input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #4e73df;
+            border-radius: 10px;
+            color: white;
+        }
+        .modal-content button {
+            width: 100%;
+            padding: 12px;
+            background: #4e73df;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .close {
+            float: right;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .hero h1 { font-size: 28px; }
+            .packages { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">RAMZZ HOSTING</div>
+        <div class="nav-buttons">
+            <button onclick="showLogin()">Login</button>
+            <button onclick="showRegister()">Register</button>
+        </div>
+    </div>
+
+    <div class="hero">
+        <h1>Beli Key <span>Panel Premium</span></h1>
+        <p>Dapatkan akses unlimited ke panel hosting terbaik</p>
+    </div>
+
+    <div class="packages">
+        <div class="package-card" onclick="buyPackage(50000)">
+            <h3>Basic</h3>
+            <p>1 Bulan Akses</p>
+            <div class="price">Rp50.000</div>
+            <button class="btn-buy">Beli Sekarang</button>
+        </div>
+        <div class="package-card" onclick="buyPackage(100000)">
+            <h3>Premium</h3>
+            <p>3 Bulan Akses</p>
+            <div class="price">Rp100.000</div>
+            <button class="btn-buy">Beli Sekarang</button>
+        </div>
+        <div class="package-card" onclick="buyPackage(200000)">
+            <h3>Pro</h3>
+            <p>6 Bulan Akses</p>
+            <div class="price">Rp200.000</div>
+            <button class="btn-buy">Beli Sekarang</button>
+        </div>
+        <div class="package-card" onclick="buyPackage(500000)">
+            <h3>Ultimate</h3>
+            <p>12 Bulan Akses</p>
+            <div class="price">Rp500.000</div>
+            <button class="btn-buy">Beli Sekarang</button>
+        </div>
+    </div>
+
+    <!-- Modal Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <h2>Login</h2>
+            <input type="text" id="loginUsername" placeholder="Username">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <button onclick="doLogin()">Login</button>
+        </div>
+    </div>
+
+    <!-- Modal Register -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeRegister()">&times;</span>
+            <h2>Register</h2>
+            <input type="text" id="regUsername" placeholder="Username">
+            <input type="email" id="regEmail" placeholder="Email">
+            <input type="password" id="regPassword" placeholder="Password">
+            <button onclick="doRegister()">Register</button>
+        </div>
+    </div>
+
+    <script>
+        let token = localStorage.getItem('token');
+        
+        function showLogin() { document.getElementById('loginModal').style.display = 'flex'; }
+        function closeLogin() { document.getElementById('loginModal').style.display = 'none'; }
+        function showRegister() { document.getElementById('registerModal').style.display = 'flex'; }
+        function closeRegister() { document.getElementById('registerModal').style.display = 'none'; }
+        
+        async function doLogin() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const res = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+            const data = await res.json();
+            if (data.success) {
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+                if (data.user.role === 'admin') {
+                    window.location.href = '/dashboard-admin.html';
+                } else {
+                    window.location.href = '/dashboard-buyer.html';
+                }
+            } else {
+                alert(data.error);
+            }
+        }
+        
+        async function doRegister() {
+            const username = document.getElementById('regUsername').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const res = await fetch('/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, email, password })
+            });
+            const data = await res.json();
+            if (data.success) {
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+                window.location.href = '/dashboard-buyer.html';
+            } else {
+                alert(data.error);
+            }
+        }
+        
+        function buyPackage(amount) {
+            if (!token) {
+                alert('Silakan login terlebih dahulu');
+                showLogin();
+                return;
+            }
+            window.location.href = `/dashboard-buyer.html?buy=${amount}`;
+        }
+        
+        if (token && window.location.pathname === '/') {
+            fetch('/api/me', { headers: { 'Authorization': `Bearer ${token}` } })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        if (data.user.role === 'admin') {
+                            window.location.href = '/dashboard-admin.html';
+                        } else {
+                            window.location.href = '/dashboard-buyer.html';
+                        }
+                    }
+                });
+        }
+    </script>
+</body>
+</html>
